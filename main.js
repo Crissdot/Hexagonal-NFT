@@ -14,6 +14,10 @@ imageObj.onload = () => {
     context2.drawImage(canvas2, 0, 0, canvas2.width/2, canvas2.height/2);
 
     context.drawImage(canvas2, 0, 0, canvas2.width/2, canvas2.height/2, 0, 0, canvas.width, canvas.height);
-    
 }
-imageObj.src = './quimica.webp';
+
+const inputNFT = document.getElementById('nftUpload');
+inputNFT.addEventListener('change', e => {
+    file = e.target.files[0];
+    imageObj.src = URL.createObjectURL(file);
+});
