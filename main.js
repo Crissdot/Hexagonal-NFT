@@ -16,9 +16,24 @@ imageObj.onload = () => {
 
     context.drawImage(canvas2, 0, 0, canvas2.width/2, canvas2.height/2, 0, 0, canvas.width, canvas.height);
 
-    context.rect(10, 10, 150, 100);
-    context.stroke();
+    fillCorner(context, 0, 125, 0, 0, 75, 0);
+    fillCorner(context, 300, 125, 300, 0, 225, 0);
+    fillCorner(context, 0, 175, 0, 300, 75, 300);
+    fillCorner(context, 300, 175, 300, 300, 225, 300);
 }
+
+const fillCorner = (context, x1, y1, x2, y2, x3, y3) => {
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2)
+    context.lineTo(x3, y3);
+    context.closePath();
+    context.lineWidth = 5;
+    context.fillStyle = '#14171A'
+    context.fill();
+    context.strokeStyle = '#14171A';
+    context.stroke();
+};
 
 const inputNFT = document.getElementById('nftUpload');
 inputNFT.addEventListener('change', e => {
