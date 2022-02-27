@@ -8,7 +8,7 @@ const imageObj = new Image();
 const downloadBtn = document.getElementById('download');
 const link = document.createElement('a');
 
-imageObj.src = './sampletest.jpg';
+//imageObj.src = './sampletest.jpg';
 imageObj.onload = () => {
     const canvas2 = document.createElement('canvas');
     canvas2.width = imageObj.width;
@@ -53,6 +53,7 @@ inputNFT.addEventListener('change', e => {
     imageObj.width = 400;
     link.download = file.name;
     downloadBtn.style.opacity = 1;
+    downloadBtn.style.cursor = 'pointer';
 });
 
 downloadBtn.addEventListener('click', () => {
