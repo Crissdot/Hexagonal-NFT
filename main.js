@@ -4,6 +4,7 @@ canvas.height = 400;
 const context = canvas.getContext('2d');
 const imageObj = new Image();
 const downloadBtn = document.getElementById('download');
+const link = document.createElement('a');
 
 imageObj.src = './sampletest.jpg';
 imageObj.onload = () => {
@@ -41,12 +42,11 @@ inputNFT.addEventListener('change', e => {
     imageObj.src = URL.createObjectURL(file);
     imageObj.height = 400;
     imageObj.width = 400;
+    link.download = file.name;
     downloadBtn.style.display = 'block';
 });
 
 downloadBtn.addEventListener('click', () => {
-    let link = document.createElement('a');
-    link.download = "aaaaaaaaa.png";
     link.href = canvas.toDataURL("image/png", 1);
 	link.click();
 })
