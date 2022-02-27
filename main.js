@@ -52,7 +52,7 @@ inputNFT.addEventListener('change', e => {
     imageObj.height = 400;
     imageObj.width = 400;
     link.download = file.name;
-    downloadBtn.style.display = 'block';
+    downloadBtn.style.opacity = 1;
 });
 
 downloadBtn.addEventListener('click', () => {
