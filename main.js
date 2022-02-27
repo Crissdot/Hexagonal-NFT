@@ -1,3 +1,5 @@
+const color = 'black';
+
 const canvas = document.getElementById('myCanvas');
 canvas.width = 400;
 canvas.height = 400;
@@ -13,14 +15,21 @@ imageObj.onload = () => {
     canvas2.height = imageObj.height;
     const context2 = canvas2.getContext('2d');
 
-    context2.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
+    const imgSize = 15;
+    context2.drawImage(imageObj, imgSize, imgSize, imageObj.width-imgSize*2, imageObj.height-imgSize*2);
 
+    context.fillStyle = color;
+    context.fillRect(0, 0, 400, 400);
     context.drawImage(canvas2, 0, 0, canvas2.width, canvas2.height, 0, 0, canvas.width, canvas.height);
 
-    fillCorner(context, 0, imageObj.height*40/100, 0, 0, imageObj.width*25/100, 0);
-    fillCorner(context, imageObj.width, imageObj.height*40/100, imageObj.width, 0, imageObj.width*75/100, 0);
-    fillCorner(context, 0, imageObj.height*60/100, 0, imageObj.height, imageObj.width*25/100, imageObj.height);
-    fillCorner(context, imageObj.width, imageObj.height*60/100, imageObj.width, imageObj.height, imageObj.width*75/100, imageObj.height);
+    const value1 = imageObj.height*45/100;
+    const value2 = imageObj.width*35/100;
+    const value3 = imageObj.width*65/100;
+    const value4 = imageObj.height*55/100;
+    fillCorner(context, 0, value1, 0, 0, value2, 0);
+    fillCorner(context, imageObj.width, value1, imageObj.width, 0, value3, 0);
+    fillCorner(context, 0, value4, 0, imageObj.height, value2, imageObj.height);
+    fillCorner(context, imageObj.width, value4, imageObj.width, imageObj.height, value3, imageObj.height);
 }
 
 const fillCorner = (context, x1, y1, x2, y2, x3, y3) => {
@@ -30,9 +39,9 @@ const fillCorner = (context, x1, y1, x2, y2, x3, y3) => {
     context.lineTo(x3, y3);
     context.closePath();
     context.lineWidth = 5;
-    context.fillStyle = '#14171A'
+    context.fillStyle = color;
     context.fill();
-    context.strokeStyle = '#14171A';
+    context.strokeStyle = color;
     context.stroke();
 };
 
